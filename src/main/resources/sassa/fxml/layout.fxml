@@ -2,10 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,13 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Slider?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sassa.gui.fxmlController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sassa.gui.fxmlController">
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -233,6 +233,25 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
+                        <CheckBox fx:id="findArea" layoutX="14.0" layoutY="413.0" mnemonicParsing="false" text="Find of Area" />
+                        <TextField fx:id="areaMin" disable="true" layoutX="167.0" layoutY="409.0" prefHeight="25.0" prefWidth="70.0" text="1">
+                           <tooltip>
+                              <Tooltip text="If you notice structures are all in the same location, lower this value." />
+                           </tooltip>
+                        </TextField>
+                        <Text layoutX="141.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min: " />
+                        <TextField fx:id="areaMax" disable="true" layoutX="273.0" layoutY="409.0" prefHeight="25.0" prefWidth="70.0" text="200">
+                           <tooltip>
+                              <Tooltip text="If you notice structures are all in the same location, lower this value." />
+                           </tooltip>
+                        </TextField>
+                        <Text layoutX="247.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max:" />
+                        <TextField fx:id="areaDensity" disable="true" layoutX="448.0" layoutY="409.0" prefHeight="25.0" prefWidth="70.0" text="16">
+                           <tooltip>
+                              <Tooltip text="If you notice structures are all in the same location, lower this value." />
+                           </tooltip>
+                        </TextField>
+                        <Text layoutX="355.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search density: " />
                      </children>
                   </Pane>
                </content></Tab>

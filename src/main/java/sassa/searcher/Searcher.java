@@ -146,6 +146,14 @@ public class Searcher {
                     ArrayList<Biome> allBiomesOUTFound = BiomeSearcher.findBiome(searchSize, worldSeed, bo, incrementer);
                     if(allBiomesOUTFound.size() != 0)continue;
                 }
+                //AREA SEARCH
+                if (!ContinentSearcher.getContinent(getBiomeSource(Dimension.OVERWORLD, worldSeed),
+                        Integer.parseInt(Singleton.getInstance().getAreaMin().getText()),
+                        Integer.parseInt(Singleton.getInstance().getAreaMax().getText()),
+                        Integer.parseInt(Singleton.getInstance().getAreaDensity().getText()))) {
+                    System.out.println("It worked.");
+                    continue;
+                }
 
                 Util util = new Util();
                 if(fxmlController.running == true){

@@ -116,7 +116,7 @@ public class SearchingThread extends Thread implements Runnable{
             ArrayList<Biome.Category> ci = new ArrayList<>(this.categoriesIN);
             ArrayList<Biome.Category> co  = new ArrayList<>(this.categoriesOUT);
 
-            if(si.size() != 0 && sg.getRandomSeed().isSelected()) {
+            if((si.size() != 0|| sg.getFindArea().isSelected()) && sg.getRandomSeed().isSelected()) {
                 Searcher.searchRandomly(searchRadius, startSeedStructure, endSeedStructure, si, so, bi, bo, ci, co, Dimension.OVERWORLD, incrementer, biomePrecision);
                 break;
             } else {

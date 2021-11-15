@@ -21,9 +21,10 @@ public class Singleton {
     private TextArea console;
     private MCVersion minecraftVersion;
     private Text tRejSeed, cRejSeed, sequencedSeed, coresAmount;
-    private TextField seedCount, incrementer, minSeed, maxSeed, biomePrecision, xCoordSpawn, zCoordSpawn, marginOfError;
+    private TextField seedCount, incrementer, minSeed, maxSeed, biomePrecision, xCoordSpawn, zCoordSpawn, marginOfError,
+    areaMin, areaMax,areaDensity;
     private fxmlController controller;
-    private CheckBox autoSave, shadowMode, bedrockMode, randomSeed, setSeed, spawnPoint;
+    private CheckBox autoSave, shadowMode, bedrockMode, randomSeed, setSeed, spawnPoint, findArea;
     private File outputFile, seedFile;
     private ComboBox worldType;
     private Slider amountOfCores;
@@ -250,5 +251,22 @@ public class Singleton {
 
     public void setMarginOfError(TextField marginOfError){
         this.marginOfError = marginOfError;
+    }
+
+    public void setAreaMin(TextField areaMin) { this.areaMin = areaMin;};
+    public TextField getAreaMin() {return areaMin;};
+
+    public void setAreaMax(TextField a) {areaMax = a;};
+    public TextField getAreaMax() {return areaMax;};
+
+    public void setAreaDensity(TextField a) {areaDensity = a;};
+    public TextField getAreaDensity() {return areaDensity;};
+
+    public void setFindArea(CheckBox findArea) {
+        this.findArea = findArea;
+    }
+
+    public CheckBox getFindArea() {
+        return findArea;
     }
 }

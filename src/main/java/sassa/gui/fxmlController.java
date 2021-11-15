@@ -23,6 +23,7 @@ import kaptainwutax.biomeutils.biome.Biome;
 import kaptainwutax.biomeutils.biome.Biomes;
 import kaptainwutax.featureutils.structure.*;
 import kaptainwutax.mcutils.version.MCVersion;
+import sassa.searcher.AreaSearchingThread;
 import sassa.searcher.SearchingThread;
 import sassa.util.Singleton;
 import sassa.util.StructureProvider;
@@ -49,6 +50,18 @@ public class fxmlController implements Initializable {
     String[] worldTypes = {
             "DEFAULT/AMP", "LARGE BIOMES"
     };
+
+    @FXML
+    private CheckBox findArea;
+
+    @FXML
+    private TextField areaMin;
+
+    @FXML
+    private TextField areaMax;
+
+    @FXML
+    private TextField areaDensity;
 
     @FXML
     private Text cRejSeedCount;
@@ -225,6 +238,10 @@ public class fxmlController implements Initializable {
         singleton.setXCoordSpawn(xCoordSpawn);
         singleton.setZCoordSpawn(zCoordSpawn);
         singleton.setMarginOfError(marginOfError);
+        singleton.setAreaMin(areaMin);
+        singleton.setAreaMax(areaMax);
+        singleton.setAreaDensity(areaDensity);
+        singleton.setFindArea(findArea);
 
         amountOfCores.setMax(Runtime.getRuntime().availableProcessors());
         coresAmount.textProperty().bind(
@@ -247,6 +264,13 @@ public class fxmlController implements Initializable {
         saveConsole.setOnAction(buttonHandler);
         resetUIBtn.setOnAction(buttonHandler);
 
+        //AREA SEARCHER CHECKBOX
+        findArea.setOnAction(e -> {
+            areaMax.setDisable(!areaMax.isDisable());
+            areaMin.setDisable(!areaMin.isDisable());
+            areaDensity.setDisable(!areaDensity.isDisable());
+
+        });
 
         ArrayList<String> versions = new ArrayList<>();
         for(MCVersion v : MCVersion.values()){
@@ -355,6 +379,8 @@ public class fxmlController implements Initializable {
             } else if (e.getSource() == resetUIBtn) {
                 rebuildUI(singleton.getMinecraftVersion());
             }
+
+
         }
 
     };
@@ -372,9 +398,12 @@ public class fxmlController implements Initializable {
         ArrayList<Biome> biomesOUT = GuiCollector.getBiomesFromUI(biomesGrid, "Exclude");
         ArrayList<Biome.Category> categoriesIN = GuiCollector.getCategoryFromUI(biomeSetsGrid, "Include");
         ArrayList<Biome.Category> categoriesOUT = GuiCollector.getCategoryFromUI(biomeSetsGrid, "Exclude");
-        if (structuresIN.size() == 0 && structuresOUT.size() == 0
+
+
+         if (structuresIN.size() == 0 && structuresOUT.size() == 0
                 && biomesIN.size() == 0 && biomesOUT.size() == 0 //
-                && categoriesIN.size() == 0 && categoriesOUT.size() == 0) {
+                && categoriesIN.size() == 0 && categoriesOUT.size() == 0
+         && !findArea.isSelected()) {
             util.console("Select something to search...");
             toggleRunning();
             //print out the world seed (Plus possibly more information)
